@@ -18,3 +18,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "android_uitl_demo"
 include ':app'
+include ':android_util_library'
