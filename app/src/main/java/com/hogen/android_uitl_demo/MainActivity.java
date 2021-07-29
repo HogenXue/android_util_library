@@ -3,6 +3,9 @@ package com.hogen.android_uitl_demo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import java.util.logging.LogManager;
+
+
 public class MainActivity extends AppCompatActivity {
 
     @Override

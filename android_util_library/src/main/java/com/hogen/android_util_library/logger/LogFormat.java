@@ -1,4 +1,5 @@
 package com.hogen.android_util_library.logger;
 
-public class LogFormat {
+public interface LogFormat<T> {
+    String format(T data);
 }
