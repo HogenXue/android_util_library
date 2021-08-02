@@ -3,31 +3,25 @@ package com.hogen.android_util_library.logger;
 import android.support.annotation.NonNull;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class LogManager {
-    static LogManager logManager;
-    static LogConfig logConfig;
-    static List<LogPrinter> logPrtiners = new ArrayList<>();
+    private static LogManager instance;
+    private static LogConfig logConfig;
+    private List<LogPrinter> logPrtiners = new ArrayList<>();
 
-    private LogManager() throws Exception {
-        if(logManager != null){
-            throw new Exception("logmanager is init alread!");
-        }
+    private LogManager(LogConfig config,LogPrinter[] logPrinters){
+        this.logConfig = config;
+        this.logPrtiners.addAll(Arrays.asList(logPrinters));
     }
 
-    static LogManager getInstance() throws Exception {
-        if(logManager != null){
-            return logManager;
-        }
-        return new LogManager();
+    static LogManager getInstance(){
+        return instance;
     }
 
     static void init(@NonNull LogConfig config,LogPrinter...printers){
-        logConfig = config;
-        for( LogPrinter printer : printers){
-            logPrtiners.add(printer);
-        }
+        instance = new LogManager(config,printers);
     }
 
     public LogConfig getLogConfig() {

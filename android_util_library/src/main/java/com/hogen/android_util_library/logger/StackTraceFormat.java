@@ -8,19 +8,19 @@ import java.util.Stack;
  * @time 2021/7/29 16:43
  * @brief
  **/
-class StackTraceFormat implements LogFormat<Stack> {
+class StackTraceFormat implements LogFormat<StackTraceElement[]> {
     @Override
-    public String format(Stack data) {
+    public String format(StackTraceElement[] data) {
         StringBuilder sb = new StringBuilder();
-        int size = data.size();
+        int size = data.length;
 
         for(int i = 0; i < size; i++){
             if( i == 0){
-                sb.append("|-->"+data.get(i).toString());
+                sb.append("|-->"+data[i].toString());
             }else if( i == (size - 1)){
-                sb.append("|--"+data.get(i).toString());
+                sb.append("|--"+data[i].toString());
             }else{
-                sb.append("|-*-"+data.get(i).toString());
+                sb.append("|-*-"+data[i].toString());
             }
         }
 
